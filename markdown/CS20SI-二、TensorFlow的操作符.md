@@ -1,8 +1,3 @@
----
-title: CS20SI 二、TensorFlow的操作符
-date: 2017-08-10 13:34:39
-tags: TensorFlow
----
 # 二、TensorFlow的操作符
 > 内容由Chip Huye编写，Danijar Hafner校对
 > 中文翻译：xinjiyuan97，校对：
@@ -16,7 +11,7 @@ TensorBoard是TensorFlow库中的图形可视化软件。用[谷歌自己的话]
 
 当完全配置时，TensorBoard将会是这样的。图像取自TensorBoard的网站。
 
-![](/img/note2/1.png)
+![](https://github.com/xinjiyuan97/CS20SI_Chinese/blob/note2/markdown/img/note2/1.png)
 
 当用户在tensorboard激活的TensorFlow程序中执行某些操作时，这些操作将被导出到一个事件文件中。TensorBoard能够将这些事件文件转换为图形，从而能够观察模型的行为。学会使用TensorBoard，会让TensorFlow的工作变得更加有趣和高效。
 
@@ -63,10 +58,10 @@ $ tensorboard  -- logdir = "./graphs"
 打开您的浏览器，进入http://localhost:6006/ (或在运行tensorboard命令后返回的链接)。
 
 进入标签页，你会看到这样的东西:
-![](/img/note2/2.png)
+![](https://github.com/xinjiyuan97/CS20SI_Chinese/blob/note2/markdown/img/note2/2.png)
 
 转到Graph，你可以看到一张3个节点的图
-![](/img/note2/3.png)
+![](https://github.com/xinjiyuan97/CS20SI_Chinese/blob/note2/markdown/img/note2/3.png)
 
 ```python
 a = tf.constant(2)
@@ -82,7 +77,7 @@ x = tf.add(a, b, name = 'add')
 ```
 
 现在，如果你再次运行TensorBoard，你会看到这张图:
-![](/img/note2/4.png)
+![](https://github.com/xinjiyuan97/CS20SI_Chinese/blob/note2/markdown/img/note2/4.png)
 
 图本身定义了操作和依赖关系，但不显示值。它只运行会话时才会显示一些值。提醒一下，防止你忘了:
 
