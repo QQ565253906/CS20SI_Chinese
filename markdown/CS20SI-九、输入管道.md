@@ -1,9 +1,3 @@
----
-title: Stanford CS20SI 九、输入管道
-date: 2017-08-14 12:29:06
-tags: tensorflow
----
-
 # 九、输入管道
 > 内容由Chip Huye编写
 > 中文翻译：xinjiyuan97，校对：
@@ -13,9 +7,6 @@ tags: tensorflow
 
 @ I hope you guys enjoyed the last few guest lectures. Now we need to get back to doing some real work. Because of the guest lectures, we haven’t been able to get to some important concepts that a lot of people seem to be confused about. I want to go over them in details just to make sure everyone is on the same page. A lot of what is written below is taken from TensorFlow documentation.
 我希望你们能喜欢前几堂课。现在我们需要回去做一些重要的工作。由于在听讲座时，我们还没能接触到一些重要的概念，所以很多人似乎都对此感到困惑。为了确保每个人都能够接受这些内容，我想详细介绍一下他们。下面的许多内容都是从TensorFlow文档中获取的。
-
-<!--more-->
-
 ## 队列与合作？？？(Queues and Coordinators)
 
 @ We briefly mentioned queues but never discussed them in details. In TensorFlow documentation, queues are described as “important TensorFlow objects for computing tensors asynchronously in a graph.”
@@ -38,7 +29,7 @@ TensorFlow会话对象是多线程设计的，因此多个线程可以轻松地�
 @ There are two main queue classes, tf.FIFOQueue and tf.RandomShuffleQueue. FIFOQueue creates a queue the dequeues elements in a first in first out order, while RandomShuffleQueue dequeues elements in, well, a random order. These two queues support the enqueue, enqueue_many, and dequeue (which do exactly what they sound). A common practice is that you enqueue many examples in when you read your data, but dequeue them one by one. dequeue_many is not allowed. If you want to get multiple elements at once for your batch training, you’ll have to use tf.train.batch or tf.train.shuffle_batch if you want to your batch to be shuffled.
 有两个主要的队列类，tf.FIFOQueue和tf.RandomShuffleQueue。FIFOQueue会在第一个队列中创建一个队列的队列元素，而随机排序队列则会在一个随机的顺序中对元素进行排序。这两个队列支持enqueue、enqueue_many和dequeue(它们完全按照它们的字面意思运行)。一种常见的做法是，在读取数据时，将许多示例加入到队列中，然后一个接一个地对它们进行排序。dequeue_many是不允许的。如果您想要一次性获得多个元素，那么您将不得不使用tf.train.batch或tf.train。如果您想要批处理的批处理，请关闭。
 
-![](/img/note9/1.png)
+![](https://github.com/xinjiyuan97/CS20SI_Chinese/blob/note9/markdown/img/note9/1.png)
 
 @ There is also tf.PaddingFIFOQueue which is a FIFOQueue that supports batching variable-sized tensors by padding. Sometimes you need to feed variable size batches in, for example, in sequence to sequence models for natural language processing, a lot of time you want each sentence to be a batch, but sentences don’t have equal lengths. A PaddingFIFOQueue may contain components with dynamic shape, while also supporting dequeue_many. There is also the CS106-favorite tf.PriorityQueue, which is a FIFOQueue whose enqueues and dequeues take in another argument: the priority.
 
